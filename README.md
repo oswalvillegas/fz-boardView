@@ -1,5 +1,7 @@
 # FZ BoardView
 
+<img src="https://www.youtube.com/watch?v=Q9v26KJvNIo">
+
 Visor de placas de circuitos impresos (PCB) para archivos **.fz** de las placas de
 ASUS / FlexBV, además de formatos abiertos derivados.
 
