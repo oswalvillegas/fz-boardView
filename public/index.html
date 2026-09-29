@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FZ BoardView</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="toolbar">
+    <button id="btn-open" title="Abrir archivo .fz (Ctrl+O)">Abrir</button>
+    <button id="btn-fit" title="Ajustar a la placa (F)">Ajustar</button>
+    <button id="btn-side">Lado: Todos</button>
+    <button id="btn-nails">Clavos: On</button>
+    <button id="btn-color">Color: Lado</button>
+    <select id="btn-idx" title="Etiqueta de pin (I)"></select>
+    <button id="btn-flip">Voltear: Off</button>
+    <button id="btn-panel" title="Ocultar/mostrar panel lateral">Panel: On</button>
+    <button id="btn-rotate" title="Rotar esquema" aria-label="Rotar esquema">↻</button>
+    <span id="rotation-status" aria-live="polite">Rotación: 0°</span>
+    <label class="sep"><span id="lang-label">Idioma</span>
+        <select id="lang-select">
+            <option value="es">Español</option>
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+            <option value="zh">中文</option>
+        </select>
+    </label>
+    <label class="sep"><span id="search-label">Búsqueda</span> <input id="search" type="text" placeholder="refdes o red...">
+        <button id="search-prev" title="Coincidencia anterior">◀</button>
+        <button id="search-next" title="Coincidencia siguiente">▶</button>
+        <span id="search-count"></span></label>
+    <button id="btn-clear">Limpiar</button>
+    <select id="file-list" title="Archivos .fz en el servidor"></select>
+    <span id="status" class="grow"></span>
+</div>
+
+<div id="body">
+    <aside id="side">
+        <div id="tabs">
+            <button id="tab-board" class="tab">Placa</button>
+            <button id="tab-part" class="tab active">Parte</button>
+            <button id="tab-conn" class="tab">Conexión</button>
+        </div>
+        <div id="panel"></div>
+    </aside>
+    <div id="resizer"></div>
+    <div id="stage">
+        <canvas id="board"></canvas>
+        <div id="canvas-tooltip" role="status"></div>
+        <div id="drop-msg">Arrastra un archivo .fz</div>
+        <input type="file" id="file-input" accept=".fz,.brd,.bdv,.tvw,.cad" hidden>
+    </div>
+</div>
+
+<div id="statusbar"><span id="bar-text"></span></div>
+
+<script src="app.js"></script>
+</body>
+</html>

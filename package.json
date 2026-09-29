@@ -1,0 +1,44 @@
+{
+    "name": "fz-boardview",
+    "version": "1.0.0",
+    "description": "FZ BoardView - visor de placas",
+    "private": true,
+    "main": "main.cjs",
+    "scripts": {
+        "start": "node server.js",
+        "build:sea": "node tools/embed-public.js && esbuild server.js --bundle --platform=node --outfile=bundle.js && node --experimental-sea-config sea-config.json",
+        "build:app": "node tools/embed-public.js && esbuild server.js --bundle --platform=node --outfile=bundle.js && electron-packager . FZBoardView --platform=win32 --arch=x64 --out=../dist --overwrite && node tools/apply-icon.js",
+        "build:app:linux": "node tools/embed-public.js && esbuild server.js --bundle --platform=node --outfile=bundle.js && electron-packager . FZBoardView --platform=linux --arch=x64 --out=../dist --overwrite",
+        "build:app:all": "node tools/embed-public.js && esbuild server.js --bundle --platform=node --outfile=bundle.js && electron-packager . FZBoardView --platform=win32 --arch=x64 --out=../dist --overwrite && node tools/apply-icon.js && electron-packager . FZBoardView --platform=linux --arch=x64 --out=../dist --overwrite",
+        "app": "electron ."
+    },
+    "electronPackagerConfig": {
+        "icon": "../icono.ico",
+        "ignore": [
+            "^/node_modules",
+            "^/public",
+            "^/lib",
+            "^/tools",
+            "^/embedded-assets.js",
+            "^/sea-",
+            "^/recent.json",
+            "^/bundle.map",
+            "^/package-lock.json"
+        ]
+    },
+    "pkg": {
+        "assets": [
+            "public/**/*"
+        ],
+        "targets": [
+            "node20-win-x64"
+        ],
+        "outputPath": ".."
+    },
+    "devDependencies": {
+        "@yao-pkg/pkg": "^6.2.0",
+        "electron": "latest",
+        "electron-packager": "^17.1.2",
+        "esbuild": "^0.28.2"
+    }
+}
